@@ -1,12 +1,13 @@
-
-require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
+require('dotenv').config();
 const token = process.env.TOKEN;
-const bot = new TelegramBot(token, {polling: true});
+
 const webAppUrl = 'https://relaxed-rabanadas-61e839.netlify.app'
 
 const PyrusUrl = "https://api.pyrus.com/v4"
+
+const bot = new TelegramBot(token, {polling: true});
 
 let userData = {
 
@@ -49,3 +50,13 @@ bot.on('message', async (msg) => {
 
 
 
+ axios.post(PyrusUrl +"/auth", {
+     login: 'alexander.mikheev@franklinsburger.ru',
+     security_key: '-UN-NQQtdoQpKG-Kx7~uDoXKYqnX7K-UbqhsxC~sX8VXmAc3ylAnn9OdTx70jrnYdSYDC4hrhLdxqtQaoMJS8grtN5V1hYAQ'
+   })
+   .then(function (response) {
+     console.log(response);
+   })
+   .catch(function (error) {
+     console.log(error);
+   });
